@@ -25,4 +25,4 @@ Route::put('/updateuser','UserController@editprofile')->middleware('auth:api');
 
 Route::get('/loginuserdetails','UserController@loginuserdetails')->middleware('auth:api');
 
-Route::post('/uploaddoc','UserController@uploaddoc');
+Route::post('/uploaddoc','UserController@uploaddocuments')->middleware('auth:api');

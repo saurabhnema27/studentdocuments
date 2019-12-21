@@ -129,51 +129,46 @@ class UserController extends Controller
     public function uploaddocuments(Request $request)
     {
         $user = Auth::user();
-        dd($user);
-        // if($user)
-        // {
-        //     $validator = Validator::make($request->all(), [ 
-        //         'birthcirtificate' => 'required|image|mimes:jpeg,png,jpg,pdf|max:2048',
-        //     ]);
+        //dd($user);
+        if($user)
+        {
+            $validator = Validator::make($request->all(), [ 
+                'birthcirtificate' => 'required|image|mimes:jpeg,png,jpg,pdf|max:2048',
+            ]);
 
-        //     if ($validator->fails()) { 
-        //         return response()->json(['error'=>$validator->errors()], 506);            
-        //     }
+            if ($validator->fails()) { 
+                return response()->json(['error'=>$validator->errors()], 506);            
+            }
 
-        //     $sd = new studentdocument();
-        //     if ($request->hasFile('birthcirtificate')) {
-        //         $brthc = $request->file('birthcirtificate');
-        //         $name = str_slug($request->title).'.'.$brthc->getClientOriginalExtension();
-        //         $destinationPath = public_path('/uploads/birthcirtificate');
-        //         $imagePath = $destinationPath. "/".  $name;
-        //         $image->move($destinationPath, $name);
-        //         $sd->birthcirtificate = $name;
-        //         $sd->user_id = $user->id;
-        //         dd($sd);
-        //         $sd->save();
-        //         $success['statuscode'] = 506;
-        //         $success['documents'] = $name;
-        //         $success['message'] = "documents uploaded successfully";
-        //         return response()->json(['success'=>$success]);
-        //     }
+            $sd = new studentdocument();
+            if ($request->hasFile('birthcirtificate')) {
+                $brthc = $request->file('birthcirtificate');
+                $name = str_slug($request->title).'.'.$brthc->getClientOriginalExtension();
+                $destinationPath = public_path('/uploads/birthcirtificate');
+                $imagePath = $destinationPath. "/".  $name;
+                $image->move($destinationPath, $name);
+                $sd->birthcirtificate = $name;
+                $sd->user_id = $user->id;
+                dd($sd);
+                $sd->save();
+                $success['statuscode'] = 506;
+                $success['documents'] = $name;
+                $success['message'] = "documents uploaded successfully";
+                return response()->json(['success'=>$success]);
+            }
 
-        //     elseif($request->hasFile())
-        //     {
-        //         $input = $request->all();
-        //     }
+            elseif($request->hasFile())
+            {
+                $input = $request->all();
+            }
 
-        // }
-        // else
-        // {
-        //     return response()->json(['error'=>'invalid user'], 401);
-        // }
+        }
+        else
+        {
+            return response()->json(['error'=>'invalid user'], 401);
+        }
     }
 
-    public function uploaddoc()
-    {
-        $user = Auth::user();
-        dd($user);
-    }
 
 
 }
