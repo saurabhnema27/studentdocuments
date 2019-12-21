@@ -13,6 +13,6 @@ class studentdocument extends Model
      * @var array
      */
     protected $fillable = [
-        'birthcirtificate'
+        'birthcertificate','otherdocument','user_id',
     ];
 }

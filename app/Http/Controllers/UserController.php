@@ -112,11 +112,10 @@ class UserController extends Controller
         $user = Auth::user();
         if($user)
         {
-            $documents = studentdocument::where('user_id',$user->id)->first();
+            $documents = auth()->user()->studentdocument;
             //dd($documents);
             $success['statuscode'] = 504;
             $success['user'] = $user;
-            $success['documents'] = $documents;
             return response()->json(['success' => $success]); 
         }
 
@@ -128,45 +127,50 @@ class UserController extends Controller
 
     public function uploaddocuments(Request $request)
     {
-        $user = Auth::user();
-        //dd($user);
-        if($user)
-        {
-            $validator = Validator::make($request->all(), [ 
-                'birthcirtificate' => 'required|image|mimes:jpeg,png,jpg,pdf|max:2048',
-            ]);
+        $request->validate([
+            'birthcertificate' => 'required',
+        ]);
+            $otherdoc = "";
+            $docname = "";
+       
 
-            if ($validator->fails()) { 
-                return response()->json(['error'=>$validator->errors()], 506);            
-            }
+                if($request->hasFile('otherdocuments'))
+                {
+                    // Get filename with extension           
+                $filenameWithExt = $request->file('otherdocuments')->getClientOriginalName();
+                // Get just filename
+                $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);            
+                // Get just ext
+                $extension = $request->file('otherdocuments')->getClientOriginalExtension();
+                //Filename to store
+                $fileNameToStore = $filename.'_'.time().'.'.$extension;                       
+                // Upload Image
+                $path = $request->file('otherdocuments')->    storeAs('public/otherdocuments', $fileNameToStore);
+                }
+             
 
-            $sd = new studentdocument();
-            if ($request->hasFile('birthcirtificate')) {
-                $brthc = $request->file('birthcirtificate');
-                $name = str_slug($request->title).'.'.$brthc->getClientOriginalExtension();
-                $destinationPath = public_path('/uploads/birthcirtificate');
-                $imagePath = $destinationPath. "/".  $name;
-                $image->move($destinationPath, $name);
-                $sd->birthcirtificate = $name;
-                $sd->user_id = $user->id;
-                dd($sd);
-                $sd->save();
-                $success['statuscode'] = 506;
-                $success['documents'] = $name;
+                // Handle File Upload
+                // Get filename with extension           
+                $filenameWithExt = $request->file('birthcertificate')->getClientOriginalName();
+                // Get just filename
+                $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);            
+                // Get just ext
+                $extension = $request->file('birthcertificate')->getClientOriginalExtension();
+                //Filename to store
+                $fileNameToStore = $filename.'_'.time().'.'.$extension;                       
+                // Upload Image
+                $path = $request->file('birthcertificate')->    storeAs('public/birthcertificate', $fileNameToStore);
+                
+
+                auth()->user()->studentdocument()->create([
+                    'birthcertificate' => $request->birthcertificate,
+                    'otherdocument' => $request->otherdoc || NULL,
+                    'user_id' => auth()->id()
+                ]);
+
                 $success['message'] = "documents uploaded successfully";
                 return response()->json(['success'=>$success]);
-            }
-
-            elseif($request->hasFile())
-            {
-                $input = $request->all();
-            }
-
-        }
-        else
-        {
-            return response()->json(['error'=>'invalid user'], 401);
-        }
+    
     }
 
 
