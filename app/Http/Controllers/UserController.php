@@ -167,10 +167,28 @@ class UserController extends Controller
                     'otherdocument' => $otherdocuments,
                     'user_id' => auth()->id()
                 ]);
-
+                $success['statuscode'] = 505;    
                 $success['message'] = "documents uploaded successfully";
                 return response()->json(['success'=>$success]);
     
+    }
+
+    public function documentdelete($id)
+    {
+        $user = Auth::user();
+        if($user)
+        {
+            $docs = auth()->user()->studentdocument;
+            if(count($docs)>0)
+            {
+                auth()->user()->studentdocument($id)->delete();
+                return response()->json(['success'=>"Document is delete"], 506);
+            }
+            else
+            {
+                return response()->json(['error'=>"None of your document found"], 507);
+            }
+        }
     }
 
 
