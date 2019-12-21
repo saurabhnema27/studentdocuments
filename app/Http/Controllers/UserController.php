@@ -128,11 +128,10 @@ class UserController extends Controller
     public function uploaddocuments(Request $request)
     {
         $request->validate([
-            'birthcertificate' => 'required',
+            'birthcertificate' => 'required|mimes:pdf,png,jpeg|max:2048',
         ]);
-            $otherdoc = "";
-            $docname = "";
-       
+
+                $otherdocuments = NULL;
 
                 if($request->hasFile('otherdocuments'))
                 {
@@ -145,9 +144,10 @@ class UserController extends Controller
                 //Filename to store
                 $fileNameToStore = $filename.'_'.time().'.'.$extension;                       
                 // Upload Image
-                $path = $request->file('otherdocuments')->    storeAs('public/otherdocuments', $fileNameToStore);
+                $path = $request->file('otherdocuments')->storeAs('public/otherdocuments', $fileNameToStore);
                 }
              
+                //dd($request->otherdocuments);
 
                 // Handle File Upload
                 // Get filename with extension           
@@ -159,12 +159,12 @@ class UserController extends Controller
                 //Filename to store
                 $fileNameToStore = $filename.'_'.time().'.'.$extension;                       
                 // Upload Image
-                $path = $request->file('birthcertificate')->    storeAs('public/birthcertificate', $fileNameToStore);
+                $path = $request->file('birthcertificate')->storeAs('public/birthcertificate', $fileNameToStore);
                 
 
                 auth()->user()->studentdocument()->create([
                     'birthcertificate' => $request->birthcertificate,
-                    'otherdocument' => $request->otherdoc || NULL,
+                    'otherdocument' => $otherdocuments,
                     'user_id' => auth()->id()
                 ]);
 

@@ -16,7 +16,7 @@ class CreateStudentdocumentsTable extends Migration
         Schema::create('studentdocuments', function (Blueprint $table) {
             $table->increments('id');
             $table->string('birthcertificate')->unique();
-            $table->string('otherdocument')->unique();
+            $table->string('otherdocument')->unique()->nullable();
             $table->BigInteger('user_id');
             $table->timestamps();
         });

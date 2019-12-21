@@ -1,0 +1,216 @@
+{
+	"info": {
+		"_postman_id": "17f8d555-4765-4143-9e70-976bb30843ac",
+		"name": "student",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "localhost:8000/api/updateuser",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6Ijk1OTdjNWY3ZWRlZTJmMzAwMjE0YzQ1NGU4MzMyYmU4MDQ3MzhlYWZhZjQyNmVmMzY2MDZlNGRmNTY5YmI0YjUyZDI0NTJiZjJlYjk4YTU3In0.eyJhdWQiOiIxIiwianRpIjoiOTU5N2M1ZjdlZGVlMmYzMDAyMTRjNDU0ZTgzMzJiZTgwNDczOGVhZmFmNDI2ZWYzNjYwNmU0ZGY1NjliYjRiNTJkMjQ1MmJmMmViOThhNTciLCJpYXQiOjE1NzY5MzQ5OTEsIm5iZiI6MTU3NjkzNDk5MSwiZXhwIjoxNjA4NTU3MzkxLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.osdpXgiQXOxiPyqANO_TeVHqLOql8cmLG2DlwwkuMhN8SFGneSmOGNxoao4YyFFJlWlCb1Wwectd-RlwlH11OD3M4ZANPWa90MHecAhRPZhRSYh_kIcdjNkHAicX_oDA1p8Jgz5zmd4KcrzciU1250YhHiZ1jI65soS4b-fgCprc272qwSvHnT_Kuy1Npo5DF4pSXH4W-5glPEAq2kN7bHHYUNhNd4f3IhJVnBXfc3eHp3zFREm_W7iXhqLDI1aWWE2NaTETAFpOWs5ZFZj0y5c3-9vkaK8q4PsM3XtCE4YFYrpUBr2l3y4ts4wt7jjhETcT1BykaPXbomdbkSeAXWXGvlDJziZQLEXJowBYstAw3Bwa7Y1XH0JL1RGXgCRnSGIsW_TDJDEJ_PLE1F89-C6SBq6Jv5D9wKXKGVH-9AQ62iw5E0_fntOysBBSzOjSxBwpuPvhBrkacTu9fnmERaUhhp8HVCXVvkh5HJsuz8dUCMPlhMyduGg3Pg2M_6T_lmx4wyuMXXX6iRX1cj97y9UN6yMf_y4RPHfXT3SUQmEEE-RBOhSi5j7dHWUCEpyWv7VJ7aR1epQkpljQeMYRJMZeshlCt-_7_pb7YvpbN0JJc2pIhWvgTKtMJcZTVZBki55K1ff4ypjadxnOoucaqr8smhD44cz7afUXeN21TGE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"firstname\":\"saurabh\",\n\t\"lastname\":\"nema\",\n\t\"parentname\":\"laxman\",\n\t\"course\":\"BE\",\n\t\"email\":\"sauravnemabhopal@gmail.com\",\n\t\"standard\":\"12\",\n\t\"mobilenumber\":\"1234567890\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/api/updateuser",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"updateuser"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8000/api/register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"firstname\":\"saurabh\",\n\t\"lastname\":\"nema\",\n\t\"parentname\":\"shobha\",\n\t\"course\":\"BE\",\n\t\"email\":\"sauravnemabhopal@gmail.com\",\n\t\"standard\":\"12\",\n\t\"mobilenumber\":\"1234567891\",\n\t\"password\":\"123456\",\n\t\"c_password\":\"123456\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/api/register",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8000/api/login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\":\"sauravnemabhopal@gmail.com\",\n\t\"password\":\"123456\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/api/login",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8000/api/loginuserdetails",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6Ijk1OTdjNWY3ZWRlZTJmMzAwMjE0YzQ1NGU4MzMyYmU4MDQ3MzhlYWZhZjQyNmVmMzY2MDZlNGRmNTY5YmI0YjUyZDI0NTJiZjJlYjk4YTU3In0.eyJhdWQiOiIxIiwianRpIjoiOTU5N2M1ZjdlZGVlMmYzMDAyMTRjNDU0ZTgzMzJiZTgwNDczOGVhZmFmNDI2ZWYzNjYwNmU0ZGY1NjliYjRiNTJkMjQ1MmJmMmViOThhNTciLCJpYXQiOjE1NzY5MzQ5OTEsIm5iZiI6MTU3NjkzNDk5MSwiZXhwIjoxNjA4NTU3MzkxLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.osdpXgiQXOxiPyqANO_TeVHqLOql8cmLG2DlwwkuMhN8SFGneSmOGNxoao4YyFFJlWlCb1Wwectd-RlwlH11OD3M4ZANPWa90MHecAhRPZhRSYh_kIcdjNkHAicX_oDA1p8Jgz5zmd4KcrzciU1250YhHiZ1jI65soS4b-fgCprc272qwSvHnT_Kuy1Npo5DF4pSXH4W-5glPEAq2kN7bHHYUNhNd4f3IhJVnBXfc3eHp3zFREm_W7iXhqLDI1aWWE2NaTETAFpOWs5ZFZj0y5c3-9vkaK8q4PsM3XtCE4YFYrpUBr2l3y4ts4wt7jjhETcT1BykaPXbomdbkSeAXWXGvlDJziZQLEXJowBYstAw3Bwa7Y1XH0JL1RGXgCRnSGIsW_TDJDEJ_PLE1F89-C6SBq6Jv5D9wKXKGVH-9AQ62iw5E0_fntOysBBSzOjSxBwpuPvhBrkacTu9fnmERaUhhp8HVCXVvkh5HJsuz8dUCMPlhMyduGg3Pg2M_6T_lmx4wyuMXXX6iRX1cj97y9UN6yMf_y4RPHfXT3SUQmEEE-RBOhSi5j7dHWUCEpyWv7VJ7aR1epQkpljQeMYRJMZeshlCt-_7_pb7YvpbN0JJc2pIhWvgTKtMJcZTVZBki55K1ff4ypjadxnOoucaqr8smhD44cz7afUXeN21TGE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/api/loginuserdetails",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"loginuserdetails"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8000/api/uploaddoc",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6Ijk1OTdjNWY3ZWRlZTJmMzAwMjE0YzQ1NGU4MzMyYmU4MDQ3MzhlYWZhZjQyNmVmMzY2MDZlNGRmNTY5YmI0YjUyZDI0NTJiZjJlYjk4YTU3In0.eyJhdWQiOiIxIiwianRpIjoiOTU5N2M1ZjdlZGVlMmYzMDAyMTRjNDU0ZTgzMzJiZTgwNDczOGVhZmFmNDI2ZWYzNjYwNmU0ZGY1NjliYjRiNTJkMjQ1MmJmMmViOThhNTciLCJpYXQiOjE1NzY5MzQ5OTEsIm5iZiI6MTU3NjkzNDk5MSwiZXhwIjoxNjA4NTU3MzkxLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.osdpXgiQXOxiPyqANO_TeVHqLOql8cmLG2DlwwkuMhN8SFGneSmOGNxoao4YyFFJlWlCb1Wwectd-RlwlH11OD3M4ZANPWa90MHecAhRPZhRSYh_kIcdjNkHAicX_oDA1p8Jgz5zmd4KcrzciU1250YhHiZ1jI65soS4b-fgCprc272qwSvHnT_Kuy1Npo5DF4pSXH4W-5glPEAq2kN7bHHYUNhNd4f3IhJVnBXfc3eHp3zFREm_W7iXhqLDI1aWWE2NaTETAFpOWs5ZFZj0y5c3-9vkaK8q4PsM3XtCE4YFYrpUBr2l3y4ts4wt7jjhETcT1BykaPXbomdbkSeAXWXGvlDJziZQLEXJowBYstAw3Bwa7Y1XH0JL1RGXgCRnSGIsW_TDJDEJ_PLE1F89-C6SBq6Jv5D9wKXKGVH-9AQ62iw5E0_fntOysBBSzOjSxBwpuPvhBrkacTu9fnmERaUhhp8HVCXVvkh5HJsuz8dUCMPlhMyduGg3Pg2M_6T_lmx4wyuMXXX6iRX1cj97y9UN6yMf_y4RPHfXT3SUQmEEE-RBOhSi5j7dHWUCEpyWv7VJ7aR1epQkpljQeMYRJMZeshlCt-_7_pb7YvpbN0JJc2pIhWvgTKtMJcZTVZBki55K1ff4ypjadxnOoucaqr8smhD44cz7afUXeN21TGE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "birthcertificate",
+							"type": "file",
+							"src": "/C:/Users/saura/Downloads/birthcertf.jpg"
+						},
+						{
+							"key": "otherdocuments",
+							"type": "file",
+							"src": "/C:/Users/saura/Downloads/birthcertf.jpg",
+							"disabled": true
+						},
+						{
+							"key": "file",
+							"type": "file",
+							"src": [],
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8000/api/uploaddoc",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"uploaddoc"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
